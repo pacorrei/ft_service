@@ -1,7 +1,5 @@
 FROM alpine
 MAINTAINER pacorrei <pacorrei@student.42.fr>
-#ARG MIP
-#ENV MIP=$MIP
 
 RUN apk add nginx openssh openssl --update --no-cache
 #RUN apk add telegraf --update --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted

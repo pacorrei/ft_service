@@ -6,8 +6,8 @@ RUN wget https://fr.wordpress.org/latest-fr_FR.tar.gz
 RUN tar -xzvf latest-fr_FR.tar.gz
 RUN rm latest-fr_FR.tar.gz
 RUN mkdir /www
-#RUN mv wordpress /www/
-COPY srcs/wp-config.php /www/
+RUN mv wordpress /www/
+COPY srcs/wp-config.php /www/wordpress
 COPY srcs/start.sh .
 EXPOSE 5050
 CMD sh start.sh
