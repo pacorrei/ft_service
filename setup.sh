@@ -25,67 +25,69 @@ eval $(minikube docker-env)
 
 KubeIP=$(kubectl get node -o=custom-columns='DATA:status.addresses[0].address' | sed -n 2p)
 
-
+#echo $KubeIP
 #build container
 
-echo -e "$L_GRAY - build nginx $NC"
+echo -e "$L_GRAY - build nginx>...$NC"
 docker build -t	service_nginx srcs/nginx > /dev/null
-echo -e "$L_GREEN - nginx is build $NC"
+echo -e "$L_GREEN - nginx is build !$NC"
 
-echo -e "$L_GRAY - build ftps $NC"
+echo -e "$L_GRAY - build ftps... $NC"
 docker build -t service_ftps srcs/ftps > /dev/null
-echo -e "$L_GREEN - ftps is build $NC"
+echo -e "$L_GREEN - ftps is build !$NC"
 
-echo -e "$L_GRAY - build mysql $NC"
+echo -e "$L_GRAY - build mysql... $NC"
 docker build -t service_mysql srcs/mysql > /dev/null
-echo -e  "$L_GREEN - mysql is build $NC"
+echo -e  "$L_GREEN - mysql is build !$NC"
 
-echo -e "$L_GRAY - build phpmyadpmin $NC"
+echo -e "$L_GRAY - build phpmyadpmin... $NC"
 docker build -t service_php srcs/phpmyadmin > /dev/null
-echo -e "$L_GREEN - phpmyadmin is build $NC"
+echo -e "$L_GREEN - phpmyadmin is build !$NC"
 
-echo -e "$L_GRAY - build wordpress $NC"
+echo -e "$L_GRAY - build wordpress... $NC"
 docker build -t service_wordpress srcs/wordpress > /dev/null
-echo -e "$L_GREEN - wordpress is build $NC"
+echo -e "$L_GREEN - wordpress is build !$NC"
 
-echo -e "$L_GRAY - build grafana $NC"
+echo -e "$L_GRAY - build grafana... $NC"
 docker build -t service_grafana srcs/grafana > /dev/null
-echo -e "$L_GREEN - grafana is build $NC"
+echo -e "$L_GREEN - grafana is build !$NC"
 
-echo -e "$L_GRAY - build influxdb $NC"
+echo -e "$L_GRAY - build influxdb... $NC"
 docker build -t service_influxdb srcs/influxdb > /dev/null
-echo -e "$L_GREEN - influxdb is build $NC"
+echo -e "$L_GREEN - influxdb is build !$NC"
 
 
 
 #apply .yaml file
 
 #metallb deployement
-
+sleep 3
+echo -e "$GREEN - Apply all .yaml files... $NC"
+sleep 3
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.8.1/manifests/metallb.yaml > /dev/null
 kubectl apply -f srcs/config_metallb.yaml > /dev/null
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
 kubectl apply -f srcs/nginx.yaml > /dev/null
-echo -e "$L_GREEN - nginx deployed $NC"
+echo -e "$GREEN - nginx deployed ! $NC"
 
 kubectl apply -f srcs/ftps.yaml > /dev/null
-echo -e "$L_GREEN - ftps deployed $NC"
+echo -e "$GREEN - ftps deployed !$NC"
 
 kubectl apply -f srcs/mysql.yaml > /dev/null
-echo -e "$L_GREEN - mysql deployed $NC"
+echo -e "$GREEN - mysql deployed !$NC"
 
 kubectl apply -f srcs/wordpress.yaml > /dev/null
-echo -e "$L_GREEN - wordpress deployed $NC"
+echo -e "$GREEN - wordpress deployed !$NC"
 
 kubectl apply -f srcs/phpmyadmin.yaml > /dev/null
-echo -e "$L_GREEN - phpmyadmin deployed $NC"
+echo -e "$GREEN - phpmyadmin deployed !$NC"
 
 kubectl apply -f srcs/grafana.yaml > /dev/null
-echo -e "$L_GREEN - grafana deployed $NC"
+echo -e "$GREEN - grafana deployed !$NC"
 
 kubectl apply -f srcs/influxdb.yaml > /dev/null
-echo -e "$L_GREEN - InfluxDB deployed $NC"
+echo -e "$GREEN - InfluxDB deployed !$NC"
 
 echo -e "\n$RED - Dashboard ip : $MY_IP $NC"
 

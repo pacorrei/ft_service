@@ -12,6 +12,13 @@ datasources:
     orgId: 1
     # <string> url
     url: http://localhost:8086/
+
+
+    #essaye avec l'ip de la database de influx (kubeip)
+    #essayeavec le nom du service de influxdb(mysql -> mysql-service) c'est l'image du .yaml
+    #essaye sans le / a http://localhost:8086/
+
+
     # <string> database name, if used
     database: "telegraf"
     # <bool> enable/disable basic auth
