@@ -28,7 +28,7 @@ KubeIP=$(kubectl get node -o=custom-columns='DATA:status.addresses[0].address' |
 #echo $KubeIP
 #build container
 
-echo -e "$L_GRAY - build nginx>...$NC"
+echo -e "$L_GRAY - build nginx...$NC"
 docker build -t	service_nginx srcs/nginx > /dev/null
 echo -e "$L_GREEN - nginx is build !$NC"
 
@@ -65,6 +65,7 @@ sleep 3
 echo -e "$GREEN - Apply all .yaml files... $NC"
 sleep 3
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.8.1/manifests/metallb.yaml > /dev/null
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml > /dev/null
 kubectl apply -f srcs/config_metallb.yaml > /dev/null
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 

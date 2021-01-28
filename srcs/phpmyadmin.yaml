@@ -2,31 +2,33 @@ apiVersion: v1
 kind: Service
 metadata:
   name: phpmyadmin
+  annotations :
+ #   metallb.universe.tf/address-pool : default
+    metallb.universe.tf/allow-shared-ip : shared
 spec:
   type: LoadBalancer
   selector:
-    app: phpmyadmin-app
+    app: phpmyadmin
   ports:
-    - name: http
-      protocol: TCP
+    - name: phpmyadmin
       port: 5000
       targetPort: 5000
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin-deployment
+  name: phpmyadmin
   labels:
-    app: phpmyadmin-app
+    app: phpmyadmin
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: phpmyadmin-app
+      app: phpmyadmin
   template:
     metadata:
       labels:
-        app: phpmyadmin-app
+        app: phpmyadmin
     spec:
       restartPolicy: Always
       containers:
@@ -35,10 +37,10 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
-              name: http
-          livenessProbe:
-            tcpSocket:
-              port: 5000
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 1
+              name: phpmyadmin
+          #livenessProbe:
+           # tcpSocket:
+            #  port: 5000
+            #initialDelaySeconds: 5
+            #periodSeconds: 5
+            #successThreshold: 1

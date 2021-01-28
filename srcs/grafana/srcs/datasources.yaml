@@ -11,7 +11,7 @@ datasources:
     # <int> org id. will default to orgId 1 if not specified
     orgId: 1
     # <string> url
-    url: http://localhost:8086/
+    url: http://influxdb-service:8086
 
 
     #essaye avec l'ip de la database de influx (kubeip)
