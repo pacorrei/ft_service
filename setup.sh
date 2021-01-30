@@ -7,7 +7,6 @@ L_PURPLE='\033[1;35m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-
 echo -e  "$L_GRAY - minikube clean up $NC"
 minikube delete 2> /dev/null
 echo -e "$L_GREEN - minikube was clean up $NC"

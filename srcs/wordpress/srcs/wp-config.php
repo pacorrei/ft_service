@@ -30,7 +30,7 @@ define( 'DB_USER', 'admin' );
 define( 'DB_PASSWORD', 'admin' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mysql-service' );
+define( 'DB_HOST', 'mysql' );
 
 #define('WP_HOME', 'http://AAAIPAAA:5050' );
 #define('WP_SITEURL', 'http://AAAIPAAA:5050' );
