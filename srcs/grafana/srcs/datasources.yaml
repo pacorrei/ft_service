@@ -1,30 +1,51 @@
-# config file version
 apiVersion: 1
 
 datasources:
-  # <string, required> name of the datasource. Required
-  - name: InfluxDB
-    # <string, required> datasource type. Required
-    type: influxdb
-    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
-    access: proxy
-    # <int> org id. will default to orgId 1 if not specified
-    orgId: 1
-    # <string> url
-    url: http://influxdb-service:8086
+    -   name: InfluxDB
+        type: influxdb
+        orgId: 1
+        url: http://influxdb:8086
+        access: proxy
+        database: influxdb
 
+    -   name: WORDPRESS
+        type: influxdb
+        orgId: 1
+        url: http://influxdb:8086
+        access: proxy
+        database: wordpress
 
-    #essaye avec l'ip de la database de influx (kubeip)
-    #essayeavec le nom du service de influxdb(mysql -> mysql-service) c'est l'image du .yaml
-    #essaye sans le / a http://localhost:8086/
+    -   name: PHPMYADMIN
+        type: influxdb
+        orgId: 1
+        url: http://influxdb:8086
+        access: proxy
+        database: phpmyadmin
 
+    -   name: NGINX
+        type: influxdb
+        orgId: 1
+        url: http://influxdb:8086
+        access: proxy
+        database: nginx
 
-    # <string> database name, if used
-    database: "telegraf"
-    # <bool> enable/disable basic auth
-    #secureJsonData.basicAuth: true
-    # <string> basic auth username
-    #secureJsonData.basicAuthUser: "user_telegraf"
-    # <string> Deprecated, use secureJsonData.basicAuthPassword
-    #secureJsonData.basicAuthPassword: "${INFLUXDB_TELE_PASS}"
-   # editable: true
+    -   name: MYSQL
+        type: influxdb
+        orgId: 1
+        url: http://influxdb:8086
+        access: proxy
+        database: mysql
+
+    -   name: GRAFANA
+        type: influxdb
+        orgId: 1
+        url: http://influxdb:8086
+        access: proxy
+        database: grafana
+
+    -   name: FTPS
+        type: influxdb
+        orgId: 1
+        url: http://influxdb:8086
+        access: proxy
+        database: ftps

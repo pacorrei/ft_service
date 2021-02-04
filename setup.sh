@@ -36,7 +36,7 @@ docker build -t service_ftps srcs/ftps > /dev/null
 echo -e "$L_GREEN - ftps is build !$NC"
 
 echo -e "$L_GRAY - build mysql... $NC"
-docker build -t service_mysql srcs/mysql > /dev/null
+docker build -t mysql srcs/mysql > /dev/null
 echo -e  "$L_GREEN - mysql is build !$NC"
 
 echo -e "$L_GRAY - build phpmyadpmin... $NC"

@@ -1,4 +1,3 @@
-#openrc
-#touch /run/openrc/softlevel
+	export TELEGRAF_CONFIG_PATH=/etc/telegraf.conf
 	php-fpm7 & nginx -g 'daemon off;'
-#php -S 0.0.0.0:5000 -t /www/phpmyadmin
+	 & telegraf

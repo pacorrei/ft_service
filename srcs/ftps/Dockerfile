@@ -1,8 +1,10 @@
 FROM alpine
 MAINTAINER pacorrei <pacorrei@student.42.fr>
 RUN apk update
-RUN apk add openssl
-RUN apk add pure-ftpd --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted --no-cache
+RUN apk add openssl vsftpd
+RUN apk add telegraf --update --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 COPY srcs/start.sh .
-EXPOSE 21 21000 
+COPY srcs/telegraf.conf /etc/
+COPY srcs/vsftpd.conf /etc/vsftpd/
+EXPOSE 21 30000
 CMD sh start.sh

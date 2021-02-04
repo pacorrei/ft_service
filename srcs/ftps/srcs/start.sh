@@ -1,4 +1,7 @@
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem -subj "/CN=localhost"
-echo -e "passwd\npasswd" | adduser admin
+export TELEGRAF_CONFIG_PATH=/etc/telegraf.conf
 
-/usr/sbin/pure-ftpd -p 21000:21000 -P localhost
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem -subj "/CN=172.17.0.2"
+echo -e "passwd\npasswd" | adduser admin
+#telegraf &
+
+usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf

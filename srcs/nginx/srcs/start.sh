@@ -1,4 +1,5 @@
 #!/bin/sh
+export TELEGRAF_CONFIG_PATH=/etc/telegraf.conf
 
 rm -f /var/cache/apk/*
 
@@ -16,5 +17,5 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/nginx
 openssl dhparam -dsaparam -out /etc/ssl/certs/dhparam.pem 2048
 
 #start services
-#rm /etc/telegraf.conf && telegraf &
+telegraf &
 /usr/sbin/nginx -g 'daemon off;'

@@ -16,8 +16,8 @@ spec:
     targetPort: 21
     name: ftps
     protocol: TCP
-  - port: 21000
-    targetPort: 21000
+  - port: 30000
+    targetPort: 30000
     name: ftps-data
     protocol: TCP
 

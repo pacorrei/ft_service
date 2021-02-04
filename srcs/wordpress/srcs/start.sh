@@ -1,1 +1,4 @@
-php -S 0.0.0.0:5050 -t /www/wordpress
+rm -rf /var/cache/
+export TELEGRAF_CONFIG_PATH=/etc/telegraf.conf
+telegraf & 
+php-fpm7 & nginx -g 'daemon off;'

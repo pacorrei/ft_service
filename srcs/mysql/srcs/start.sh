@@ -1,3 +1,5 @@
+export TELEGRAF_CONFIG_PATH=/etc/telegraf.conf
+
 openrc &> /dev/null
 touch /run/openrc/softlevel
 /etc/init.d/mariadb setup &> /dev/null
@@ -13,8 +15,6 @@ mysql --user=root << EOF
   FLUSH PRIVILEGES;
 EOF
 
-mysql --user=root wordpress < /root/wordpress.sql
-
-printf "Database started !\n"
-
+#mysql --user=root wordpress < /root/wordpress.sql
+telegraf &
 tail -F /dev/null

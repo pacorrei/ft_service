@@ -38,9 +38,3 @@ spec:
           ports:
             - containerPort: 5000
               name: phpmyadmin
-          #livenessProbe:
-           # tcpSocket:
-            #  port: 5000
-            #initialDelaySeconds: 5
-            #periodSeconds: 5
-            #successThreshold: 1
